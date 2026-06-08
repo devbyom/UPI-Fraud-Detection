@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI Fraud Detection | Om Anand — AKTU CSE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Animated Background Elements -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <div class="app-container">
+
+        <!-- ═══════════════════ HEADER ═══════════════════ -->
+        <header class="header">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <div class="logo-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="logo-text">
+                        <span class="logo-title">UPI Shield</span>
+                        <span class="logo-sub">Fraud Detection AI</span>
+                    </div>
+                </div>
+
+                <!-- Center: Author badge -->
+                <div class="header-center">
+                    <div class="project-badge">
+                        <span class="badge-name">Om Anand</span>
+                        <span class="badge-sep">·</span>
+                        <span class="badge-info">AKTU B.Tech CSE &nbsp;·&nbsp; ML Project</span>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Live Txns</span>
+                        <span class="stat-value" id="activeTransactions">—</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Fraud Blocked</span>
+                        <span class="stat-value fraud" id="fraudDetected">—</span>
+                    </div>
+                    <div class="stat-item online-item">
+                        <div class="status-dot"></div>
+                        <span class="stat-value status" id="systemStatus">Online</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ═══════════════════ MAIN ═══════════════════ -->
+        <main class="main-content">
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-inner">
+                    <nav class="nav-menu">
+                        <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                            <div class="nav-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <span>Dashboard</span>
+                            <div class="nav-indicator"></div>
+                        </a>
+                        <a href="#transactions" class="nav-item" data-section="transactions">
+                            <div class="nav-icon"><i class="fas fa-exchange-alt"></i></div>
+                            <span>Transactions</span>
+                            <div class="nav-indicator"></div>
+                        </a>
+                        <a href="#analytics" class="nav-item" data-section="analytics">
+                            <div class="nav-icon"><i class="fas fa-chart-line"></i></div>
+                            <span>Analytics</span>
+                            <div class="nav-indicator"></div>
+                        </a>
+                        <a href="#models" class="nav-item" data-section="models">
+                            <div class="nav-icon"><i class="fas fa-brain"></i></div>
+                            <span>ML Models</span>
+                            <div class="nav-indicator"></div>
+                        </a>
+                        <a href="#alerts" class="nav-item" data-section="alerts">
+                            <div class="nav-icon"><i class="fas fa-bell"></i></div>
+                            <span>Alerts</span>
+                            <div class="nav-indicator"></div>
+                        </a>
+                        <a href="#settings" class="nav-item" data-section="settings">
+                            <div class="nav-icon"><i class="fas fa-cog"></i></div>
+                            <span>Settings</span>
+                            <div class="nav-indicator"></div>
+                        </a>
+                    </nav>
+
+                    <!-- Author Footer -->
+                    <div class="sidebar-footer">
+                        <div class="author-card">
+                            <div class="author-avatar">OA</div>
+                            <div class="author-info">
+                                <div class="author-name">Om Anand</div>
+                                <div class="author-dept">B.Tech CSE · AKTU</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Content Area -->
+            <div class="content-area">
+
+                <!-- ══════ DASHBOARD ══════ -->
+                <section id="dashboard" class="content-section active">
+
+                    <!-- Hero Banner -->
+                    <div class="hero-banner">
+                        <div class="hero-bg-decor"></div>
+                        <div class="hero-content">
+                            <div class="hero-left">
+                                <div class="hero-chip">B.Tech CSE &nbsp;·&nbsp; Machine Learning &nbsp;·&nbsp; AKTU</div>
+                                <h1 class="hero-name">Om Anand</h1>
+                                <p class="hero-subtitle">UPI Fraud Detection using Machine Learning</p>
+                                <div class="hero-tags">
+                                    <span class="hero-tag"><i class="fas fa-robot"></i> XGBoost</span>
+                                    <span class="hero-tag"><i class="fas fa-fire"></i> LightGBM</span>
+                                    <span class="hero-tag"><i class="fas fa-tree"></i> Random Forest</span>
+                                    <span class="hero-tag"><i class="fas fa-project-diagram"></i> GNN</span>
+                                </div>
+                            </div>
+                            <div class="hero-right">
+                                <div class="hero-shield-wrap">
+                                    <div class="hero-shield"><i class="fas fa-shield-alt"></i></div>
+                                    <div class="shield-ring ring1"></div>
+                                    <div class="shield-ring ring2"></div>
+                                    <div class="shield-ring ring3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section Header -->
+                    <div class="section-header">
+                        <h2 class="section-title">Dashboard Overview</h2>
+                        <div class="section-actions">
+                            <button class="btn btn-primary" onclick="refreshDashboard()">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- KPI Grid -->
+                    <div class="dashboard-grid">
+                        <div class="metric-card fade-in" style="animation-delay:0s">
+                            <div class="metric-icon cyan"><i class="fas fa-chart-bar"></i></div>
+                            <div class="metric-body">
+                                <div class="metric-label">Transaction Volume</div>
+                                <div class="metric-value" id="transactionVolume">—</div>
+                                <div class="metric-change positive"><i class="fas fa-arrow-up"></i>&nbsp;+12.5% from yesterday</div>
+                            </div>
+                        </div>
+
+                        <div class="metric-card fade-in" style="animation-delay:.08s">
+                            <div class="metric-icon orange"><i class="fas fa-exclamation-triangle"></i></div>
+                            <div class="metric-body">
+                                <div class="metric-label">Fraud Rate</div>
+                                <div class="metric-value" id="fraudRate">0.02%</div>
+                                <div class="metric-change negative"><i class="fas fa-arrow-up"></i>&nbsp;+0.01% from yesterday</div>
+                            </div>
+                        </div>
+
+                        <div class="metric-card fade-in" style="animation-delay:.16s">
+                            <div class="metric-icon green"><i class="fas fa-bullseye"></i></div>
+                            <div class="metric-body">
+                                <div class="metric-label">Model Accuracy</div>
+                                <div class="metric-value" id="modelAccuracy">98.7%</div>
+                                <div class="metric-change positive"><i class="fas fa-arrow-up"></i>&nbsp;+0.3% from last week</div>
+                            </div>
+                        </div>
+
+                        <div class="metric-card fade-in" style="animation-delay:.24s">
+                            <div class="metric-icon purple"><i class="fas fa-clock"></i></div>
+                            <div class="metric-body">
+                                <div class="metric-label">Response Time</div>
+                                <div class="metric-value" id="responseTime">45ms</div>
+                                <div class="metric-change positive"><i class="fas fa-arrow-down"></i>&nbsp;-5ms from yesterday</div>
+                            </div>
+                        </div>
+
+                        <!-- Live Transactions -->
+                        <div class="card full-width">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <span class="pulse-dot"></span>Real-time Transactions
+                                </h3>
+                                <div class="card-actions">
+                                    <button class="btn btn-ghost btn-sm" onclick="toggleAutoRefresh()">
+                                        <i class="fas fa-play" id="autoRefreshIcon"></i>
+                                        <span id="autoRefreshText">Auto Refresh</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="transactions-list" id="transactionsList">
+                                    <div class="empty-state"><i class="fas fa-spinner fa-spin"></i><p>Loading transactions…</p></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fraud Chart -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Fraud Detection Trends</h3>
+                            </div>
+                            <div class="card-content">
+                                <canvas id="fraudChart" width="400" height="200"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Model Performance -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Model Performance</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="model-stats">
+                                    <div class="model-stat">
+                                        <div class="model-stat-top"><span class="model-name">XGBoost</span><span class="model-score">94%</span></div>
+                                        <div class="progress-bar"><div class="progress-fill cyan" style="width:94%"></div></div>
+                                    </div>
+                                    <div class="model-stat">
+                                        <div class="model-stat-top"><span class="model-name">LightGBM</span><span class="model-score">92%</span></div>
+                                        <div class="progress-bar"><div class="progress-fill green" style="width:92%"></div></div>
+                                    </div>
+                                    <div class="model-stat">
+                                        <div class="model-stat-top"><span class="model-name">Random Forest</span><span class="model-score">89%</span></div>
+                                        <div class="progress-bar"><div class="progress-fill orange" style="width:89%"></div></div>
+                                    </div>
+                                    <div class="model-stat">
+                                        <div class="model-stat-top"><span class="model-name">Isolation Forest</span><span class="model-score">87%</span></div>
+                                        <div class="progress-bar"><div class="progress-fill purple" style="width:87%"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ══════ TRANSACTIONS ══════ -->
+                <section id="transactions" class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Transaction Analysis</h2>
+                        <div class="section-actions">
+                            <button class="btn btn-primary" id="analyzeTransactionBtn">
+                                <i class="fas fa-search"></i> Analyze Transaction
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-file-invoice-dollar"></i>&nbsp;Enter Transaction Details</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="form-label" for="transactionId"><i class="fas fa-hashtag"></i>&nbsp;Transaction ID</label>
+                                    <input type="text" id="transactionId" class="form-input" placeholder="e.g. TXN8374651">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="amount"><i class="fas fa-rupee-sign"></i>&nbsp;Amount (₹)</label>
+                                    <input type="number" id="amount" class="form-input" placeholder="e.g. 5000">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="merchant"><i class="fas fa-store"></i>&nbsp;Merchant</label>
+                                    <input type="text" id="merchant" class="form-input" placeholder="e.g. Amazon India">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="location"><i class="fas fa-map-marker-alt"></i>&nbsp;Location</label>
+                                    <input type="text" id="location" class="form-input" placeholder="e.g. Mumbai, Maharashtra">
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button class="btn btn-primary btn-large" id="checkForFraudBtn">
+                                    <i class="fas fa-shield-alt"></i> Check for Fraud
+                                </button>
+                                <button class="btn btn-ghost btn-large" onclick="
+                                    ['transactionId','amount','merchant','location'].forEach(id => document.getElementById(id).value='');
+                                    document.getElementById('analysisResult').style.display='none';
+                                ">
+                                    <i class="fas fa-times"></i> Clear
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analysis-result" id="analysisResult" style="display:none;"></div>
+                </section>
+
+                <!-- ══════ ANALYTICS ══════ -->
+                <section id="analytics" class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Advanced Analytics</h2>
+                    </div>
+                    <div class="analytics-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fas fa-network-wired text-cyan"></i>&nbsp;Federated Learning</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="big-metrics">
+                                    <div class="big-metric"><span class="big-val cyan">5</span><span class="big-label">Banks</span></div>
+                                    <div class="big-metric"><span class="big-val green">96.8%</span><span class="big-label">Accuracy</span></div>
+                                    <div class="big-metric"><span class="big-val orange">High</span><span class="big-label">Privacy</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fas fa-link text-cyan"></i>&nbsp;Blockchain Audit Trail</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="big-metrics">
+                                    <div class="big-metric"><span class="big-val cyan">1,247</span><span class="big-label">Blocks</span></div>
+                                    <div class="big-metric"><span class="big-val green">45,892</span><span class="big-label">Records</span></div>
+                                    <div class="big-metric"><span class="big-val orange">100%</span><span class="big-label">Integrity</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fas fa-crosshairs text-cyan"></i>&nbsp;Threat Intelligence</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="threat-list">
+                                    <div class="threat-item high">
+                                        <div class="threat-dot"></div>
+                                        <div class="threat-info"><span>High Risk IPs</span><span class="threat-count">23</span></div>
+                                    </div>
+                                    <div class="threat-item medium">
+                                        <div class="threat-dot"></div>
+                                        <div class="threat-info"><span>Medium Risk</span><span class="threat-count">156</span></div>
+                                    </div>
+                                    <div class="threat-item low">
+                                        <div class="threat-dot"></div>
+                                        <div class="threat-info"><span>Low Risk</span><span class="threat-count">1,234</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ══════ ML MODELS ══════ -->
+                <section id="models" class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Machine Learning Models</h2>
+                    </div>
+                    <div class="models-grid">
+                        <!-- Ensemble -->
+                        <div class="model-card">
+                            <div class="model-card-header">
+                                <div class="model-card-title">
+                                    <div class="model-icon cyan"><i class="fas fa-layer-group"></i></div>
+                                    <h3>Advanced Ensemble</h3>
+                                </div>
+                                <span class="model-status active">● Active</span>
+                            </div>
+                            <div class="model-metrics">
+                                <div class="metric"><span class="metric-label">Accuracy</span><span class="metric-value cyan">98.7%</span></div>
+                                <div class="metric"><span class="metric-label">Precision</span><span class="metric-value green">96.2%</span></div>
+                                <div class="metric"><span class="metric-label">Recall</span><span class="metric-value orange">94.8%</span></div>
+                            </div>
+                            <div class="model-actions">
+                                <button class="btn btn-sm btn-outline" onclick="window.fraudApp && window.fraudApp.showToast('Retraining model…', 'info')">
+                                    <i class="fas fa-redo"></i> Retrain
+                                </button>
+                                <button class="btn btn-sm btn-primary" onclick="window.fraudApp && window.fraudApp.showToast('Model deployed successfully!', 'success')">
+                                    <i class="fas fa-rocket"></i> Deploy
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- GNN -->
+                        <div class="model-card">
+                            <div class="model-card-header">
+                                <div class="model-card-title">
+                                    <div class="model-icon orange"><i class="fas fa-project-diagram"></i></div>
+                                    <h3>GNN-Transformer</h3>
+                                </div>
+                                <span class="model-status training">⟳ Training</span>
+                            </div>
+                            <div class="model-metrics">
+                                <div class="metric"><span class="metric-label">Accuracy</span><span class="metric-value cyan">97.3%</span></div>
+                                <div class="metric"><span class="metric-label">Precision</span><span class="metric-value green">95.1%</span></div>
+                                <div class="metric"><span class="metric-label">Recall</span><span class="metric-value orange">93.7%</span></div>
+                            </div>
+                            <div class="model-actions">
+                                <button class="btn btn-sm btn-outline" onclick="window.fraudApp && window.fraudApp.showToast('Monitoring training progress…', 'info')">
+                                    <i class="fas fa-chart-area"></i> Monitor
+                                </button>
+                                <button class="btn btn-sm btn-danger" onclick="window.fraudApp && window.fraudApp.showToast('Training stopped', 'warning')">
+                                    <i class="fas fa-stop"></i> Stop
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- RL -->
+                        <div class="model-card">
+                            <div class="model-card-header">
+                                <div class="model-card-title">
+                                    <div class="model-icon green"><i class="fas fa-robot"></i></div>
+                                    <h3>Reinforcement Learning</h3>
+                                </div>
+                                <span class="model-status active">● Active</span>
+                            </div>
+                            <div class="model-metrics">
+                                <div class="metric"><span class="metric-label">Reward</span><span class="metric-value cyan">+2.34</span></div>
+                                <div class="metric"><span class="metric-label">Episodes</span><span class="metric-value green">1,247</span></div>
+                                <div class="metric"><span class="metric-label">Success Rate</span><span class="metric-value orange">89.2%</span></div>
+                            </div>
+                            <div class="model-actions">
+                                <button class="btn btn-sm btn-outline" onclick="window.fraudApp && window.fraudApp.showToast('Model reset to baseline', 'info')">
+                                    <i class="fas fa-undo"></i> Reset
+                                </button>
+                                <button class="btn btn-sm btn-primary" onclick="window.fraudApp && window.fraudApp.showToast('Model exported!', 'success')">
+                                    <i class="fas fa-download"></i> Export
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ══════ ALERTS ══════ -->
+                <section id="alerts" class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Security Alerts</h2>
+                        <button class="btn btn-ghost" onclick="window.fraudApp && (window.fraudApp.loadAlerts(), window.fraudApp.showToast('Alerts refreshed', 'success'))">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                    <div class="alerts-list" id="alertsList">
+                        <div class="empty-state"><i class="fas fa-spinner fa-spin"></i><p>Loading alerts…</p></div>
+                    </div>
+                </section>
+
+                <!-- ══════ SETTINGS ══════ -->
+                <section id="settings" class="content-section">
+                    <div class="section-header">
+                        <h2 class="section-title">System Settings</h2>
+                    </div>
+                    <div class="settings-grid">
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fas fa-sliders-h text-cyan"></i>&nbsp;Fraud Thresholds</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="setting-item">
+                                    <div class="setting-header">
+                                        <label class="setting-label">High Risk Threshold</label>
+                                        <span class="threshold-value">0.8</span>
+                                    </div>
+                                    <input type="range" min="0" max="1" step="0.01" value="0.8" id="highRiskThreshold" class="range-input">
+                                    <div class="range-labels"><span>Low</span><span>High</span></div>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-header">
+                                        <label class="setting-label">Medium Risk Threshold</label>
+                                        <span class="threshold-value">0.5</span>
+                                    </div>
+                                    <input type="range" min="0" max="1" step="0.01" value="0.5" id="mediumRiskThreshold" class="range-input">
+                                    <div class="range-labels"><span>Low</span><span>High</span></div>
+                                </div>
+                                <button class="btn btn-primary" style="margin-top:1.25rem" onclick="window.fraudApp && window.fraudApp.showToast('Thresholds saved!', 'success')">
+                                    <i class="fas fa-save"></i> Save Thresholds
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fas fa-bell text-cyan"></i>&nbsp;Notifications</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="setting-item">
+                                    <label class="toggle-label">
+                                        <span>Email Alerts</span>
+                                        <div class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></div>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <label class="toggle-label">
+                                        <span>SMS Alerts</span>
+                                        <div class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></div>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <label class="toggle-label">
+                                        <span>Push Notifications</span>
+                                        <div class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></div>
+                                    </label>
+                                </div>
+                                <button class="btn btn-primary" style="margin-top:1.25rem" onclick="window.fraudApp && window.fraudApp.showToast('Notification settings saved!', 'success')">
+                                    <i class="fas fa-save"></i> Save Settings
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card settings-full">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fas fa-info-circle text-cyan"></i>&nbsp;Project Information</h3>
+                            </div>
+                            <div class="card-content">
+                                <div class="info-table">
+                                    <div class="info-row"><span class="info-label">Developer</span><span class="info-val"><strong>Om Anand</strong></span></div>
+                                    <div class="info-row"><span class="info-label">University</span><span class="info-val">Dr. A.P.J. Abdul Kalam Technical University (AKTU)</span></div>
+                                    <div class="info-row"><span class="info-label">Branch</span><span class="info-val">B.Tech — Computer Science & Engineering</span></div>
+                                    <div class="info-row"><span class="info-label">Project</span><span class="info-val">UPI Fraud Detection Using Machine Learning</span></div>
+                                    <div class="info-row"><span class="info-label">Tech Stack</span><span class="info-val">Python · FastAPI · XGBoost · LightGBM · GNN · HTML/CSS/JS</span></div>
+                                    <div class="info-row"><span class="info-label">Version</span><span class="info-val">2.0.0</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div><!-- /content-area -->
+        </main>
+    </div><!-- /app-container -->
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner-outer"></div>
+            <div class="spinner-inner"></div>
+            <p>Analyzing…</p>
+        </div>
+    </div>
+
+    <!-- Toasts -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
