@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 \# 🛡️ UPI Fraud Detection System Using Machine Learning
 
 
@@ -612,3 +613,6 @@ This project is developed for educational and academic purposes.
 
 \### Machine Learning \& AI Enthusiast
 
+=======
+# UPI-Fraud-Detection
+>>>>>>> 591110179e78dea4d64162a8e11fbb2dae472cbb
